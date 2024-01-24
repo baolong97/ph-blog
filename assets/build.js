@@ -1,15 +1,23 @@
 const esbuild = require("esbuild");
+const postCssPlugin = require('esbuild-style-plugin')
 
 const args = process.argv.slice(2);
 const watch = args.includes('--watch');
 const deploy = args.includes('--deploy');
+
 
 const loader = {
     // Add loaders for images/fonts/etc, e.g. { '.svg': 'file' }
 };
 
 const plugins = [
-    // Add and configure plugins here
+
+    postCssPlugin({
+        postcss: {
+            plugins: [require('tailwindcss'), require('autoprefixer')],
+        },
+    }),
+
 ];
 
 // Define esbuild options
