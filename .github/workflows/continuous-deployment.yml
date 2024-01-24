@@ -11,7 +11,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Dump secret
-          run: echo -n "${{ FLY_API_TOKEN }}" | xxd -ps
+          run: echo -n "${{ secrets.FLY_API_TOKEN  }}" | xxd -ps
         - uses: actions/checkout@v3
         - uses: superfly/flyctl-actions/setup-flyctl@master
         - run: flyctl deploy --remote-only
