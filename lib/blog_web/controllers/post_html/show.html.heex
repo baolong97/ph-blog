@@ -1,0 +1,49 @@
+<.header>
+  Post <%= @post.id %> of <%= @post.user.username %>
+  <:subtitle>This is a post record from your database.</:subtitle>
+  <:actions>
+    <.link href={~p"/posts/#{@post}/edit"}>
+      <.button>Edit post</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<%= if @post.cover_image do %>
+  <img src={@post.cover_image.url} />
+<% end %>
+
+<.list>
+  <:item title="Title"><%= @post.title %></:item>
+  <:item title="Content"><%= @post.content %></:item>
+  <:item title="Cover image">
+    <%= if  @post.cover_image do %>
+      <%= @post.cover_image.url %>
+    <% end %>
+  </:item>
+
+  <:item title="Published on"><%= @post.published_on %></:item>
+  <:item title="Visible"><%= @post.visible %></:item>
+  <:item title="Tags"><%= @tags %></:item>
+  <:item title="Comments">
+    <%= for comment <- @post.comments do %>
+      <div>
+        <%= comment.content %> at <%= comment.inserted_at %> by <%= comment.user.username %>
+        <.link href={~p"/comments/#{comment.id}"} method="delete" data-confirm="Are you sure?">
+          <.button>Delete</.button>
+        </.link>
+      </div>
+    <% end %>
+  </:item>
+</.list>
+<%= if assigns[:current_user] do %>
+  <.simple_form :let={f} for={@comment_changeset} action={~p"/comments"}>
+    <.input field={f[:user_id]} type="hidden" value={@current_user.id} />
+    <.input field={f[:post_id]} type="hidden" value={@post.id} />
+    <.input field={f[:content]} type="text" label="Comment" />
+    <:actions>
+      <.button>Save Comment</.button>
+    </:actions>
+  </.simple_form>
+<% end %>
+
+<.back navigate={~p"/posts"}>Back to posts</.back>

@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.45.0",
+    "phoenix": "file:../deps/phoenix",
+    "phoenix_html": "file:../deps/phoenix_html",
+    "phoenix_live_view": "file:../deps/phoenix_live_view",
+    "topbar": "^2.0.2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.11",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1"
+  }
+}
