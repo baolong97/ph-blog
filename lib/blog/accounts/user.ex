@@ -1,6 +1,5 @@
 defmodule Blog.Accounts.User do
-  @moduledoc """
-  """
+  @moduledoc false
   use Ecto.Schema
   import Ecto.Changeset
 

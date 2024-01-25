@@ -1,6 +1,5 @@
 defmodule Blog.Seeding do
-  @moduledoc """
-  """
+  @moduledoc false
   alias Blog.Accounts
   alias Blog.Repo
   alias Blog.Posts.Post
