@@ -1,4 +1,6 @@
 defmodule Blog.Posts.CoverImage do
+  @moduledoc """
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

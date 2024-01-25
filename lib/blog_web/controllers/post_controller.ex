@@ -60,7 +60,7 @@ defmodule BlogWeb.PostController do
     render(conn, :show,
       post: post,
       comment_changeset: comment_changeset,
-      tags: post.tags |> Enum.map(fn tag -> tag.name end) |> Enum.join(", ")
+      tags: Enum.map_join(post.tags, ", ", fn tag -> tag.name end)
     )
   end
 

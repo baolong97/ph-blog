@@ -1,4 +1,6 @@
 defmodule Blog.Accounts.UserNotifier do
+  @moduledoc """
+  """
   import Swoosh.Email
 
   alias Blog.Mailer
