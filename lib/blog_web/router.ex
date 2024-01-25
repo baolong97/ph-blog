@@ -31,7 +31,7 @@ defmodule BlogWeb.Router do
     get "/", PageController, :home1
 
     get "/posts/:id/add_comment", CommentController, :add_comment
-    resources "/posts", PostController
+    resources "/posts", PostController, only: [:index, :show]
 
     resources "/tags", TagController
   end

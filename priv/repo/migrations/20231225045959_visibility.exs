@@ -5,9 +5,8 @@ defmodule Blog.Repo.Migrations.Visibility do
     alter table(:posts) do
       remove :subtitle
 
-      add :published_on , :date
-      add :visible , :boolean, default: true
-
+      add :published_on, :date
+      add :visible, :boolean, default: true
     end
 
     create unique_index(:posts, [:title])

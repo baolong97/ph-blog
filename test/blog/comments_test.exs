@@ -3,7 +3,6 @@ defmodule Blog.CommentsTest do
 
   alias Blog.Comments
 
-
   describe "comments" do
     alias Blog.Comments.Comment
 
@@ -41,7 +40,9 @@ defmodule Blog.CommentsTest do
 
     test "create_comment/1 with invalid data returns error changeset" do
       user = user_fixture()
-      assert {:error, %Ecto.Changeset{}} = Comments.create_comment(@invalid_attrs|>Enum.into(%{user_id: user.id}))
+
+      assert {:error, %Ecto.Changeset{}} =
+               Comments.create_comment(@invalid_attrs |> Enum.into(%{user_id: user.id}))
     end
 
     test "create_comment/1 comments are created with a user." do
@@ -77,7 +78,7 @@ defmodule Blog.CommentsTest do
     test "delete_comment/1 deletes the comment" do
       user = user_fixture()
       post = post_fixture(%{user_id: user.id})
-      comment = comment_fixture(%{post_id: post.id,user_id: user.id})
+      comment = comment_fixture(%{post_id: post.id, user_id: user.id})
       assert {:ok, %Comment{}} = Comments.delete_comment(comment)
       assert_raise Ecto.NoResultsError, fn -> Comments.get_comment!(comment.id) end
     end
@@ -85,7 +86,7 @@ defmodule Blog.CommentsTest do
     test "change_comment/1 returns a comment changeset" do
       user = user_fixture()
       post = post_fixture(%{user_id: user.id})
-      comment = comment_fixture(%{post_id: post.id,user_id: user.id})
+      comment = comment_fixture(%{post_id: post.id, user_id: user.id})
       assert %Ecto.Changeset{} = Comments.change_comment(comment)
     end
   end
