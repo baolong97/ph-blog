@@ -15,6 +15,8 @@ defmodule BlogWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+    plug :fetch_current_user
   end
 
   scope "/", BlogWeb do
@@ -34,6 +36,12 @@ defmodule BlogWeb.Router do
     resources "/posts", PostController, only: [:index, :show]
 
     resources "/tags", TagController
+  end
+
+  scope "/api", BlogWeb do
+    pipe_through [:api, :require_authenticated_user]
+
+    post "/chatgpt", ChatGPTController, :create
   end
 
   # Other scopes may use custom stacks.

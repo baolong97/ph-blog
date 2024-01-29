@@ -10,4 +10,19 @@
   tag_options={@tag_options}
 />
 
+<.modal id="chatgpt-modal">
+  <h1 class="text-center text-xl font-bold">Chatgpt</h1>
+  <div class="items-center mt-5 w-full">
+    <div class="flex items-center align-middle w-full m-auto">
+      <input type="text" id="chat-content" name="chat" class="flex-1 mr-1"> 
+      <.button id="send-button" onclick="generate_blog()">Send</.button>
+
+    </div>
+    <textarea class="mt-5 w-full h-60" id="blog-content">
+      
+    </textarea>
+  </div>
+</.modal>
+<.button class="mt-5" phx-click={show_modal("chatgpt-modal")}>Show chatgpt</.button>
+
 <.back navigate={~p"/posts"}>Back to posts</.back>
