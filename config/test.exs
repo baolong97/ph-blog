@@ -39,12 +39,11 @@ config :wallaby,
   otp_app: :blog,
   driver: Wallaby.Chrome,
   chromedriver: [
-    headless: false,
-    path: "D:\\chromedriver-win32\\chromedriver.exe",
-    binary: "D:\\chrome-win32\\chrome.exe"
-  ]
+    headless: true,
+    binary: "/home/kid/Downloads/chrome-linux64/chrome"
+  ],
+  screenshot_dir: "./"
 
 config :wallaby, :phoenix, app: :blog
 
 config :blog, :sandbox, Ecto.Adapters.SQL.Sandbox
-config :blog, :sandbox, BLogWeb.Sandbox
