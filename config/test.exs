@@ -21,7 +21,7 @@ config :blog, Blog.Repo,
 config :blog, BlogWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "sk2VQF4bB4Zme6/CJVY2RBnB9t5xXlfU4tBipybFcEAd3R5xLROxTB8Z5rRwk0gV",
-  server: false
+  server: true
 
 # In test we don't send emails.
 config :blog, Blog.Mailer, adapter: Swoosh.Adapters.Test
@@ -34,3 +34,17 @@ config :logger, level: :warning
 
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :wallaby,
+  otp_app: :blog,
+  driver: Wallaby.Chrome,
+  chromedriver: [
+    headless: false,
+    path: "D:\\chromedriver-win32\\chromedriver.exe",
+    binary: "D:\\chrome-win32\\chrome.exe"
+  ]
+
+config :wallaby, :phoenix, app: :blog
+
+config :blog, :sandbox, Ecto.Adapters.SQL.Sandbox
+config :blog, :sandbox, BLogWeb.Sandbox

@@ -4,7 +4,6 @@ defmodule Blog.ChatGPTs do
   """
 
   import Ecto.Query, warn: false
-  alias Blog.Repo
 
   alias Blog.ChatGPTs.ChatGPT
 
